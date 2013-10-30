@@ -1,0 +1,3 @@
+clang++ --std=c++11 -DVR_ENABLE_TEST vr_wrap.cc -o wrapper_test -IOculusSDK/LibOVR/Include/ -LOculusSDK/LibOVR/Lib/Linux/Release/x86_64 -lovr -ludev -lpthread -lX11 -lXinerama
+
+clang++ --std=c++11 -O2 vr_wrap.cc -IOculusSDK/LibOVR/Include/ -c && ar rcs libvr.a vr_wrap.o
