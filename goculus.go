@@ -1,6 +1,12 @@
 package main
 
+// #cgo LDFLAGS: -L. -lvr -lovr -ludev -lpthread -lX11 -lXinerama
+// #include "vr_wrap.h"
+import "C"
+
 import (
+	/* "ovr" */
+
 	"errors"
 	"fmt"
 	"io/ioutil"
@@ -69,6 +75,9 @@ func main() {
 
 	glfw.SwapInterval(1)
 	gl.Init()
+
+	C.vr_init()
+	defer C.vr_finish()
 
 	gl.ClearColor(0.0, 0.0, 1.0, 1.0)
 	vs := shaderFromSource("glsl/perspective.v.glsl", gl.VERTEX_SHADER)
